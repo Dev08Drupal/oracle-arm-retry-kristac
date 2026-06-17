@@ -2,8 +2,8 @@ name: Reintento Oracle ARM
 
 on:
   schedule:
-    # Corre cada 10 minutos. GitHub puede retrasarlo un poco, es normal.
-    - cron: "*/10 * * * *"
+    # Corre cada 15 minutos. GitHub puede retrasarlo un poco, es normal.
+    - cron: "*/15 * * * *"
   workflow_dispatch: {}  # te permite correrlo manualmente desde la pestaña Actions
 
 permissions:
@@ -53,22 +53,8 @@ jobs:
         working-directory: scripts
         run: python create_instance.py
 
-      - name: Verificar contenido de state.json (diagnóstico)
-        run: |
-          echo "--- Árbol completo del repo (sin .git) ---"
-          find . -path ./.git -prune -o -type f -print
-          echo ""
-          echo "--- ls -la en la raíz ---"
-          ls -la
-          echo ""
-          echo "--- ls -la en scripts/ ---"
-          ls -la scripts/
-          echo ""
-          echo "--- Contenido de ./state.json (raíz) ---"
-          cat ./state.json 2>/dev/null || echo "⚠️ No existe ./state.json"
-          echo ""
-          echo "--- Contenido de ./scripts/state.json (si existe) ---"
-          cat ./scripts/state.json 2>/dev/null || echo "(no existe scripts/state.json, esto es correcto)"
+      - name: Verificar contenido de state.json
+        run: cat ./state.json 2>/dev/null || echo "⚠️ No existe ./state.json"
 
       - name: Guardar estado actualizado (state.json)
         if: always()
