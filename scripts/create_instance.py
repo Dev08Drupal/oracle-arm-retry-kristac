@@ -152,9 +152,9 @@ def send_success_email(instance, public_ip: str, state: dict) -> None:
 
 
 def send_start_email(state: dict) -> None:
-    subject = "🚀 Iniciando reintento automático de instancia Oracle ARM"
+    subject = "🚀 Kristal | Iniciando reintento automático de instancia Oracle ARM"
     body = (
-        "Se acaba de activar el proceso de reintento automático para crear tu "
+        "kristac. Se acaba de activar el proceso de reintento automático para crear tu "
         "instancia VM.Standard.A1.Flex (4 OCPU, 24GB RAM) en Oracle Cloud.\n\n"
         "El script intentará crear la instancia cada 10 minutos hasta que haya "
         "capacidad disponible.\n\n"
